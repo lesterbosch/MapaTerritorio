@@ -103,3 +103,52 @@ body{
     cursor: pointer;
     margin: 0;
 }
+#infoManzana {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    width: 280px;
+
+    background: white;
+    border-radius: 12px;
+
+    padding: 20px;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+
+    font-family: Arial, sans-serif;
+
+    z-index: 1000;
+}
+
+#infoManzana h3 {
+    margin: 0 0 18px 0;
+
+    font-size: 20px;
+
+    text-align: center;
+}
+
+#infoManzana p {
+    margin: 10px 0;
+
+    line-height: 1.4;
+}
+
+#infoManzana b {
+    font-size: 13px;
+}
+
+.cerrarInfo {
+    position: absolute;
+
+    top: 8px;
+    right: 12px;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    line-height: 1;
+}
