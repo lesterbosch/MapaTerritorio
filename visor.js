@@ -1,6 +1,5 @@
 const URL =
-"https://script.google.com/macros/s/AKfycbz3JizVK4o9SSsV8gnPt2WHmUB3vggoZMJ0_fKwVuD2nElR1V9RJ5NWfjuM89Tuhn1pFQ/exec";
-
+"https://script.google.com/macros/s/AKfycbwEABkKEpSezvJ82on1MLBSkwXULYt12PKgbzD1ujdph9BhS8cL3oHrmJnO0tV66IOupQ/exec";
 const colores = {
     rojo: "#ff0000",
     verde: "rgb(0, 170, 0)",
