@@ -674,11 +674,6 @@ function actualizarNombresCalles() {
         // Mostrar el nombre exactamente
         // en la posición que tiene en el SVG
         elem.style.display = "";
-
-        // Quitar cualquier transformación
-        // agregada anteriormente por esta función
-        elem.removeAttribute("transform");
-
     });
 }
 
