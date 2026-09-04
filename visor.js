@@ -102,17 +102,32 @@ function cargarColores() {
 
                 if (!id) return;
 
-                const manzana = svg.querySelector(`path[data-manzana="${id}"]`);
+                const manzanasSVG =
+    svg.querySelectorAll("path[data-manzana]");
 
-                if (!manzana) {
+const manzana =
+    Array.from(manzanasSVG).find(elem => {
 
-                    console.log(
-                        "NO EXISTE EN SVG:",
-                        id
-                    );
+        const nombreSVG =
+            String(
+                elem.getAttribute("data-manzana") || ""
+            )
+                .trim()
+                .toUpperCase()
+                .replace(/\s+/g, "");
 
-                    return;
-                }
+        return nombreSVG === id;
+    });
+
+if (!manzana) {
+
+    console.log(
+        "NO EXISTE EN SVG:",
+        id
+    );
+
+    return;
+}
 
                 const color =
                     fila.color || "#ffffff";
