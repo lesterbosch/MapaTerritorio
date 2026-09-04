@@ -600,6 +600,34 @@ capturaZoom.addEventListener(
     "touchend",
     function(e) {
 
+        // ==================================
+// DETECTAR TOQUE EN UNA MANZANA
+// ==================================
+
+if (e.changedTouches.length === 1) {
+
+    const dedo = e.changedTouches[0];
+
+    const diferenciaX =
+        Math.abs(dedo.clientX - inicioX - desplazamientoX);
+
+    const diferenciaY =
+        Math.abs(dedo.clientY - inicioY - desplazamientoY);
+
+    // Si prácticamente no se movió, es un toque
+    if (
+        diferenciaX < 10 &&
+        diferenciaY < 10
+    ) {
+
+        detectarManzana(
+            dedo.clientX,
+            dedo.clientY,
+            dedo.clientX,
+            dedo.clientY
+        );
+    }
+}
         if (e.touches.length === 0) {
 
             arrastrando = false;
