@@ -683,7 +683,7 @@ function actualizarNombresCalles() {
 // MOSTRAR INFORMACIÓN
 // ========================================
 
-function mostrarInformacionManzana(nombre) {
+function mostrarInformacionManzana(nombre, posicionX = null, posicionY = null)  {
 
     console.log("================================");
     console.log("MANZANA CLIC:", nombre);
@@ -765,6 +765,12 @@ function mostrarInformacionManzana(nombre) {
 
         document.body.appendChild(ventana);
     }
+    if (posicionX !== null && posicionY !== null) {
+
+    ventana.style.position = "fixed";
+    ventana.style.left = posicionX + "px";
+    ventana.style.top = posicionY + "px";
+}
 
     // ==================================
     // MOSTRAR DATOS DE SHEETS
