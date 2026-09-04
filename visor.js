@@ -240,7 +240,7 @@ capturaZoom.addEventListener(
         zoom =
             Math.max(
                 0.5,
-                Math.min(30, zoom)
+                Math.min(100, zoom)
             );
 
 
@@ -543,7 +543,7 @@ capturaZoom.addEventListener(
             zoom =
                 Math.max(
                     0.5,
-                    Math.min(30, zoom)
+                    Math.min(100, zoom)
                 );
 
 
