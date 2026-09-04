@@ -158,3 +158,19 @@ body{
 
     line-height: 1;
 }
+/* CELULARES Y TABLETS */
+@media (max-width: 768px){
+
+    #barra{
+        height:55px;
+    }
+
+    #barra input{
+        width:150px;
+    }
+
+    #panel{
+        width:220px;
+        padding:10px;
+    }
+}
