@@ -952,7 +952,7 @@ capturaZoom.addEventListener("mouseup", function(e) {
 // DETECTAR MANZANA
 // ========================================
 
-function detectarManzana(clientX, clientY) {
+function detectarManzana(clientX, clientY, posicionX = null, posicionY = null) {
 
     if (!svg) return;
 
@@ -996,9 +996,11 @@ function detectarManzana(clientX, clientY) {
                 nombre
             );
 
-            mostrarInformacionManzana(
-                nombre
-            );
+           mostrarInformacionManzana(
+    nombre,
+    posicionX,
+    posicionY
+);
 
             return;
         }
