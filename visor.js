@@ -956,21 +956,40 @@ function detectarManzana(clientX, clientY, posicionX = null, posicionY = null) {
 
     if (!svg) return;
 
-    const rect = visor.getBoundingClientRect();
+    // ==================================
+    // CONVERTIR CLIC/TOQUE A COORDENADAS SVG
+    // ==================================
 
-    // Posición del toque dentro del visor
-    const visorX = clientX - rect.left;
-    const visorY = clientY - rect.top;
+    const rect = objetoSVG.getBoundingClientRect();
 
-    // Convertir a coordenadas del mapa
+    const viewBox =
+        svg.documentElement.viewBox.baseVal;
+
     const x =
-        (visorX - desplazamientoX) / zoom;
+        (clientX - rect.left) /
+        rect.width *
+        viewBox.width;
 
     const y =
-        (visorY - desplazamientoY) / zoom;
+        (clientY - rect.top) /
+        rect.height *
+        viewBox.height;
 
-    console.log("TOQUE:", clientX, clientY);
-    console.log("COORDENADAS MAPA:", x, y);
+    console.log("COORDENADAS SVG:", x, y);
+
+    // ==================================
+    // CREAR PUNTO SVG
+    // ==================================
+
+    const punto =
+        svg.createSVGPoint();
+
+    punto.x = x;
+    punto.y = y;
+
+    // ==================================
+    // BUSCAR MANZANA REALMENTE TOCADA
+    // ==================================
 
     const elementos =
         svg.querySelectorAll(
@@ -979,14 +998,23 @@ function detectarManzana(clientX, clientY, posicionX = null, posicionY = null) {
 
     for (const manzana of elementos) {
 
-        const caja =
-            manzana.getBBox();
+        // Convertir el punto a las coordenadas
+        // internas de esta manzana
+        const matriz =
+            manzana.getScreenCTM();
 
+        if (!matriz) continue;
+
+        const puntoLocal =
+            punto.matrixTransform(
+                matriz.inverse()
+            );
+
+        // Comprobar si el punto está
+        // realmente dentro del path
         if (
-            x >= caja.x &&
-            x <= caja.x + caja.width &&
-            y >= caja.y &&
-            y <= caja.y + caja.height
+            manzana.isPointInFill &&
+            manzana.isPointInFill(puntoLocal)
         ) {
 
             const nombre =
@@ -1005,14 +1033,6 @@ function detectarManzana(clientX, clientY, posicionX = null, posicionY = null) {
                 posicionY
             );
 
-            return;
-        }
-    }
-
-    console.log(
-        "NO SE ENCONTRÓ MANZANA"
-    );
-}
             return;
         }
     }
