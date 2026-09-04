@@ -144,7 +144,9 @@ function colorearManzana(id, color) {
         return;
 
     const manzana =
-        svg.getElementById(id);
+    svg.querySelector(
+        `path[data-manzana="${id}"]`
+    );
 
     if (manzana)
         manzana.style.fill = color;
