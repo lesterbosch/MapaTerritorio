@@ -956,18 +956,21 @@ function detectarManzana(clientX, clientY, posicionX = null, posicionY = null) {
 
     if (!svg) return;
 
-    const rect =
-        objetoSVG.getBoundingClientRect();
+    const rect = visor.getBoundingClientRect();
 
+    // Posición del toque dentro del visor
+    const visorX = clientX - rect.left;
+    const visorY = clientY - rect.top;
+
+    // Convertir a coordenadas del mapa
     const x =
-        (clientX - rect.left) /
-        rect.width *
-        svg.documentElement.viewBox.baseVal.width;
+        (visorX - desplazamientoX) / zoom;
 
     const y =
-        (clientY - rect.top) /
-        rect.height *
-        svg.documentElement.viewBox.baseVal.height;
+        (visorY - desplazamientoY) / zoom;
+
+    console.log("TOQUE:", clientX, clientY);
+    console.log("COORDENADAS MAPA:", x, y);
 
     const elementos =
         svg.querySelectorAll(
@@ -992,16 +995,24 @@ function detectarManzana(clientX, clientY, posicionX = null, posicionY = null) {
                 );
 
             console.log(
-                "MANZANA SELECCIONADA:",
+                "MANZANA CORRECTA:",
                 nombre
             );
 
-           mostrarInformacionManzana(
-    nombre,
-    posicionX,
-    posicionY
-);
+            mostrarInformacionManzana(
+                nombre,
+                posicionX,
+                posicionY
+            );
 
+            return;
+        }
+    }
+
+    console.log(
+        "NO SE ENCONTRÓ MANZANA"
+    );
+}
             return;
         }
     }
