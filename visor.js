@@ -102,8 +102,7 @@ function cargarColores() {
 
                 if (!id) return;
 
-                const manzana =
-                    svg.getElementById(id);
+                const manzana = svg.querySelector(`path[data-manzana="${id}"]`);
 
                 if (!manzana) {
 
