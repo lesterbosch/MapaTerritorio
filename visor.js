@@ -172,7 +172,7 @@ function colorearManzana(id, color) {
 // ZOOM Y MOVIMIENTO
 // ========================================
 
-let zoom = window.innerWidth <= 768 ? 1.2 : 1;
+let zoom = 1;
 
 let desplazamientoX = 0;
 let desplazamientoY = 0;
